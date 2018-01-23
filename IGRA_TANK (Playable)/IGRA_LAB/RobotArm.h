@@ -34,6 +34,7 @@ public:
 	void MoveForward(double dist);
 	//void HandleKeyDown(WPARAM wParam);
 	void HandleKeyWASD(WPARAM wParam);
+	void MoveForward(double dist, WPARAM wParam);
 	void CreateBaseTexture();
 	void SetMaterial(Material *m);
 	// Following Nodes need to available in HandleKeyDown

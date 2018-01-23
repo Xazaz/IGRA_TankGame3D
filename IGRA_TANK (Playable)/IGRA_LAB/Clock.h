@@ -14,6 +14,7 @@ public:
 	void Start();
 	double TimePassedSincePreviousTime();
 	double TimePassedSinceStartTime();
+	double GetTimePassedSinceStart();
 	double GetTimePassedSinceLastTime();
 	~Clock();
 };

@@ -48,6 +48,18 @@ double Clock::TimePassedSinceStartTime() {
 
 	return timePassedSeconds;
 }
+
+double Clock::GetTimePassedSinceStart() {
+	__int64 currentTimeInCounts;
+	double timePassedSeconds;
+	// Calculate time passed in seconds since timer was started
+	QueryPerformanceCounter((LARGE_INTEGER *)&currentTimeInCounts);
+	timePassedSeconds = (currentTimeInCounts - startTimeInCounts) /
+		(double)countsPerSecond;
+
+	return timePassedSeconds;
+}
+
 // Return relative time in seconds - since last measurement
 double Clock::GetTimePassedSinceLastTime() {
 	__int64 currentTimeInCounts, timePassedSinceLastTimeInCounts;
