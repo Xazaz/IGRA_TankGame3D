@@ -1,5 +1,55 @@
-﻿  Tank.cpp
-c1xx : fatal error C1083: Cannot open source file: 'Tank.cpp': No such file or directory
+﻿  stdafx.cpp
+  RobotArm.cpp
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(256): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(257): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(259): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(260): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(325): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(331): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(332): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(334): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(335): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(340): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(341): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(353): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(354): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   IGRA_LAB.cpp
-c:\users\joshua\desktop\igra_08\igra_lab\igra_lab.cpp(8): fatal error C1083: Cannot open include file: 'Tank.h': No such file or directory
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\igra_lab.cpp(67): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\github\igra_tankgame3d\igra_tank (playable)\igra_lab\igra_lab.cpp(68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Clock.cpp
   Generating Code...
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_wglCreateContext referenced in function "int __cdecl InitOpenGL(void)" (?InitOpenGL@@YAHXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_wglMakeCurrent referenced in function "int __cdecl InitOpenGL(void)" (?InitOpenGL@@YAHXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glBegin referenced in function "void __cdecl Draw3D_AxisSystem(void)" (?Draw3D_AxisSystem@@YAXXZ)
+RobotArm.obj : error LNK2001: unresolved external symbol __imp_glBegin
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glClear referenced in function "void __cdecl DrawGLScene(void)" (?DrawGLScene@@YAXXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glClearColor referenced in function "void __cdecl DrawGLScene(void)" (?DrawGLScene@@YAXXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glColor3f referenced in function "void __cdecl Draw3D_AxisSystem(void)" (?Draw3D_AxisSystem@@YAXXZ)
+RobotArm.obj : error LNK2001: unresolved external symbol __imp_glColor3f
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glEnable referenced in function "void __cdecl DrawGLScene(void)" (?DrawGLScene@@YAXXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glEnd referenced in function "void __cdecl Draw3D_AxisSystem(void)" (?Draw3D_AxisSystem@@YAXXZ)
+RobotArm.obj : error LNK2001: unresolved external symbol __imp_glEnd
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glLightfv referenced in function "void __cdecl SetupLight(void)" (?SetupLight@@YAXXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glLoadIdentity referenced in function "void __cdecl DrawGLScene(void)" (?DrawGLScene@@YAXXZ)
+RobotArm.obj : error LNK2001: unresolved external symbol __imp_glLoadIdentity
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glMatrixMode referenced in function "void __cdecl DrawGLScene(void)" (?DrawGLScene@@YAXXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glShadeModel referenced in function "void __cdecl SetupLight(void)" (?SetupLight@@YAXXZ)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glVertex3f referenced in function "void __cdecl Draw3D_AxisSystem(void)" (?Draw3D_AxisSystem@@YAXXZ)
+RobotArm.obj : error LNK2001: unresolved external symbol __imp_glVertex3f
+IGRA_LAB.obj : error LNK2019: unresolved external symbol __imp_glViewport referenced in function "void __cdecl ReSizeGLScene(int,int)" (?ReSizeGLScene@@YAXHH@Z)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol gluPerspective referenced in function "void __cdecl ReSizeGLScene(int,int)" (?ReSizeGLScene@@YAXHH@Z)
+IGRA_LAB.obj : error LNK2019: unresolved external symbol gluLookAt referenced in function "void __cdecl DrawGLScene(void)" (?DrawGLScene@@YAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol __imp_glGetFloatv referenced in function "public: void __cdecl RobotArm::BuildTree(void)" (?BuildTree@RobotArm@@QEAAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol __imp_glMaterialfv referenced in function "public: void __cdecl RobotArm::DrawBase(void)" (?DrawBase@RobotArm@@QEAAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol __imp_glMultMatrixf referenced in function "public: void __cdecl RobotArm::DrawTree(struct TreeNode *)" (?DrawTree@RobotArm@@QEAAXPEAUTreeNode@@@Z)
+RobotArm.obj : error LNK2019: unresolved external symbol __imp_glPopMatrix referenced in function "public: void __cdecl RobotArm::DrawJoint(void)" (?DrawJoint@RobotArm@@QEAAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol __imp_glPushMatrix referenced in function "public: void __cdecl RobotArm::DrawJoint(void)" (?DrawJoint@RobotArm@@QEAAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol __imp_glRotatef referenced in function "public: void __cdecl RobotArm::BuildTree(void)" (?BuildTree@RobotArm@@QEAAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol __imp_glTranslatef referenced in function "public: void __cdecl RobotArm::BuildTree(void)" (?BuildTree@RobotArm@@QEAAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol gluNewQuadric referenced in function "public: __cdecl RobotArm::RobotArm(void)" (??0RobotArm@@QEAA@XZ)
+RobotArm.obj : error LNK2019: unresolved external symbol gluQuadricNormals referenced in function "public: __cdecl RobotArm::RobotArm(void)" (??0RobotArm@@QEAA@XZ)
+RobotArm.obj : error LNK2019: unresolved external symbol gluQuadricTexture referenced in function "public: __cdecl RobotArm::RobotArm(void)" (??0RobotArm@@QEAA@XZ)
+RobotArm.obj : error LNK2019: unresolved external symbol gluCylinder referenced in function "public: void __cdecl RobotArm::DrawLowerArm(void)" (?DrawLowerArm@RobotArm@@QEAAXXZ)
+RobotArm.obj : error LNK2019: unresolved external symbol gluSphere referenced in function "public: void __cdecl RobotArm::DrawJoint(void)" (?DrawJoint@RobotArm@@QEAAXXZ)
+E:\Github\IGRA_TankGame3D\IGRA_TANK (Playable)\x64\Debug\IGRA_LAB.exe : fatal error LNK1120: 28 unresolved externals

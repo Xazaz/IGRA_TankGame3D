@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Clock.h" />
     <ClInclude Include="IGRA_LAB.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="RobotArm.h" />
     <ClInclude Include="stdafx.h" />
@@ -154,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="IGRA_LAB.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="RobotArm.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
