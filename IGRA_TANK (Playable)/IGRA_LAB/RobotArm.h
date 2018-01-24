@@ -17,6 +17,11 @@ public:
 	float xPos;
 	float yPos;
 	float zPos;
+
+	// Movement must be based on orientation of player
+	double deltaX = 0;
+	double deltaZ = 0;
+
 	double yRotation;
 
 	RobotArm();
@@ -31,12 +36,13 @@ public:
 	void DrawUpperArm();
 
 	void Rotate(double angle);
-	void MoveForward(double dist);
 	//void HandleKeyDown(WPARAM wParam);
 	void HandleKeyWASD(WPARAM wParam);
-	void MoveForward(double dist, WPARAM wParam);
+	void HandleKeyRelease(WPARAM wParam);
+	void MoveForward(WPARAM wParam);
 	void CreateBaseTexture();
 	void SetMaterial(Material *m);
+
 	// Following Nodes need to available in HandleKeyDown
 	TreeNode* tree;
 	TreeNode* lowerArmNode;

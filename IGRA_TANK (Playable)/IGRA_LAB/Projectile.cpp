@@ -21,26 +21,27 @@ void Projectile::Update(float deltaTime)
 }
 
 void Projectile::Draw() {
-	if (globalPosY + localDistY > -1) {
-		glPushMatrix();
+	if (currentStat == PROECTILESTAT::FIRED) {
+		if (globalPosY + localDistY > -1) {
+			glPushMatrix();
 
-		//ROTATE DIRECTION TO MOVE
-		glRotatef(yawAngle - 90
-			, 0, 1, 0);
+			glTranslatef(globalPosX, globalPosY, globalPosZ);
 
-		glTranslatef(globalPosX, globalPosY, globalPosZ);
+			//ROTATE DIRECTION TO MOVE
+			glRotatef(yawAngle + 90, 0, 1, 0);
 
-		glTranslatef(localDistX, localDistY, 0);
+			glTranslatef(localDistX, localDistY, 0);
 
-		//ROTATE TO FACE
-		glRotatef(90, 0, 1, 0);
+			//ROTATE TO FACE
+			glRotatef(90, 0, 1, 0);
 
-		//ROTATE TO FACE UP DOWN
-		glRotated(velocityY * -50, 1, 0, 0);
+			//ROTATE TO FACE UP DOWN
+			glRotated(velocityY * -50, 1, 0, 0);
 
-		DrawCylinder(0.3, 0.75, 10, 10);
-		glPopMatrix();
-	}
+			DrawCylinder(0.3, 0.75, 10, 10);
+			glPopMatrix();
+		}
+	} 
 }
 
 void Projectile::Fire() {

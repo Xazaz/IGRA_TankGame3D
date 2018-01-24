@@ -15,7 +15,7 @@ public:
 
 	Material yellowPlasticMaterial;
 
-	enum PROECTILESTAT { NOTFIRED, FIRED };
+	enum PROECTILESTAT { NOTFIRED, FIRED ,LANDED};
 	PROECTILESTAT currentStat = NOTFIRED;
 
 	void Update(float deltaTime);

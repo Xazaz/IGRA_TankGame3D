@@ -4,7 +4,14 @@
 //Basic cout
 #include <iostream>
 using namespace std;
-
+Clock *clock = new Clock;
+double currentVelo = 0;
+double currentAcc = 0;
+double currentDcc = 0;
+double maxVelo = 360;
+double t;
+float acceVel;
+double timeMaxStarts = 0;
 
 RobotArm::RobotArm()
 {
@@ -16,25 +23,17 @@ RobotArm::RobotArm()
 	gluQuadricTexture(base, GL_TRUE);// if you want to map a texture to it.
 	CreateBaseTexture();
 	
-
 }
-Clock *clock = new Clock;
-double currentVelo = 0;
-double currentAcc = 0;
-double currentDcc = 0;
-double maxVelo = 360;
-double t;
-float acceVel;
-double timeMaxStarts = 0;
 
 enum AccState
 {
 	Acc,
 	Dcc,
 	Max,
-	SS
+	SS,
+	StandStill
 };
-AccState CurrentState = AccState::Acc;
+AccState CurrentState = AccState::SS;
 RobotArm::~RobotArm()
 {
 }
@@ -137,6 +136,9 @@ void RobotArm::BuildTree() {
 	lowerArmNode->child = upperArmNode;
 	lowerArmNode->sibling = jointNode;
 	upperArmNode->sibling = jointNode2;
+
+
+	clock->Start();
 }
 
 void RobotArm::DrawTree(TreeNode* root) {
@@ -256,14 +258,30 @@ float degToRad(float degAngle) {
 	return (float)(degAngle / 180.0 * pi);
 }
 
+void RobotArm::MoveForward(WPARAM wParam) {
+	switch (wParam)
+	{
+	case VK_UP:
+		if (currentVelo > 0.1) {
+			CurrentState = AccState::Max;
+		}
+		else {
+			CurrentState = AccState::Dcc;
+		}
+		break;
+	case VK_DOWN:
+		if (currentVelo < -0.1) {
+			CurrentState = AccState::Max;
+		}
+		else {
+			CurrentState = AccState::Acc;
+		}
+		break;
+	}
+}
+
 void RobotArm::HandleKeyWASD(WPARAM wParam) 
 {
-	
-
-	double timePassedAbsInSeconds = clock->GetTimePassedSinceStart();
-	t = timePassedAbsInSeconds;
-
-
 	// Handle the various key-presses
 	if (wParam == VK_LEFT) //Body left 
 	{
@@ -279,14 +297,11 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 	}
 	if (wParam == VK_UP)
 	{
-
-		MoveForward(0.1, VK_UP);
-		//zTranslateBase -= 5;
+		MoveForward(VK_UP);
 	}
 	if (wParam == VK_DOWN)
 	{
-		MoveForward(-0.2, VK_DOWN);
-		//zTranslateBase += 5;
+		MoveForward(VK_DOWN);
 	}
 	if (wParam == 'W') //Turret up 
 	{
@@ -305,11 +320,6 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 		rotUpperArm += 3;
 	}
 	
-	/*double timePassedRelInSeconds = clock->GetTimePassedSinceLastTime();
-	currentVelo += (currentAcc * t);
-	acceVel += timePassedRelInSeconds * currentVelo; */
-	
-
 	//Update the rotation of the lower arm (Up and down)
 	glLoadIdentity();
 	//glTranslatef(xPos, yPos, zPos);
@@ -323,74 +333,16 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 	glGetFloatv(GL_MODELVIEW_MATRIX, upperArmNode->matrix);// get & stores transform
 	
 }
-void RobotArm::MoveForward(double dist, WPARAM wParam) {
-	clock->Start();
-	double timePassedAbsInSeconds = clock->GetTimePassedSinceStart();
-	t = timePassedAbsInSeconds;
-
-	// Movement must be based on orientation of player
-	double deltaX = 0;
-	double deltaZ = 0;
-	// Calculate translation as based on current yRotation angle
-	deltaX = -dist*sin(degToRad(yRotation));
-	deltaZ = -dist*cos(degToRad(yRotation));
-	// Update the position
-	xPos = (xPos + deltaX);
-	zPos = (zPos + deltaZ);
-
-		switch (CurrentState)
-		{
-		case Acc:
-			if ((wParam == VK_UP)) {
-				timeMaxStarts = clock->GetTimePassedSinceStart();
-				CurrentState = Max;//Dcc;
-			}
-			dist += 0.1;
-			//SetWindowTextA(hWnd, "State is Accelerating");
-			break;
-		case Dcc:
-			if ((wParam == VK_DOWN)) {
-				CurrentState = SS;
-			}
-			dist -= 0.1;
-			//SetWindowTextA(hWnd, "State is Decelerating");
-			break;
-
-		case Max:
-
-			if (timePassedAbsInSeconds - timeMaxStarts > 2.0) {
-				timeMaxStarts = 0;
-				CurrentState = Dcc;
-			}
-			dist = 0;
-			
-			//sprintf_s(buffer, "State is at Max Speed %0.2f", timePassedAbsInSeconds - timeMaxStarts);
-			
-			//SetWindowTextA(hWnd, "State is at Max Speed");
-			break;
-		case SS:
-			dist = 0;
-			currentVelo = 0;
-			//SetWindowTextA(hWnd, "State is Standstill");
-			break;
-		default:
-			break;
-		}
-
-
-	double timePassedRelInSeconds = clock->GetTimePassedSinceLastTime();
-	currentVelo += (dist * t);
-	acceVel += timePassedRelInSeconds * currentVelo;
-
-	glPushMatrix();
-	// Update the position & rotation of the complete robot arm
-	glLoadIdentity();
-	glTranslatef(xPos , yPos + 0.075, zPos);
-	glRotatef(yRotation+180, 0, 1, 0);
-	glGetFloatv(GL_MODELVIEW_MATRIX, tree->matrix);// get & stores transform *
-	glPopMatrix(); 
-
-
+void RobotArm::HandleKeyRelease(WPARAM wParam)
+{
+	switch (wParam)
+	{
+	case VK_UP:
+		CurrentState = AccState::SS;
+	case VK_DOWN:
+		CurrentState = AccState::SS;
+		break;
+	}
 }
 
 void RobotArm::Rotate(double angle) {
@@ -404,7 +356,6 @@ void RobotArm::Rotate(double angle) {
 	glRotatef(yRotation + 180, 0, 1, 0);
 	glGetFloatv(GL_MODELVIEW_MATRIX, tree->matrix);// get & stores transform *
 	glPopMatrix();
-
 }
 
 
@@ -412,5 +363,58 @@ void RobotArm::Rotate(double angle) {
 void RobotArm::Draw() {
 	DrawTree(tree);
 	DrawJoint();
+
+	double timePassedAbsInSeconds = clock->GetTimePassedSinceStart();
+	t = timePassedAbsInSeconds * 0.001;
+
+	switch (CurrentState)
+	{
+	case Acc:
+		if (currentVelo > 0.1) {
+			CurrentState = AccState::Max;
+		}
+		else {
+			currentVelo += t;
+		}
+		break;
+	case Dcc:
+		if (currentVelo < -0.1) {
+			CurrentState = AccState::Max;
+		}
+		else {
+			currentVelo -= t;
+		}
+		break;
+	case Max:
+		break;	
+	
+	case StandStill:
+		currentVelo = 0;
+			break;
+	case SS:
+		if (currentVelo > 0) {
+			currentVelo -= t * 0.5;
+		}
+		else if (currentVelo < 0)
+		{
+			currentVelo += t * 0.5;
+		}
+		break;
+	}
+
+	// Calculate translation as based on current yRotation angle
+	deltaX = sin(degToRad(yRotation)) * currentVelo;
+	deltaZ = cos(degToRad(yRotation)) * currentVelo;
+	// Update the position
+	xPos = (xPos + deltaX);
+	zPos = (zPos + deltaZ);
+
+	glPushMatrix();
+	// Update the position & rotation of the complete robot arm
+	glLoadIdentity();
+	glTranslatef(xPos, yPos + 0.075, zPos);
+	glRotatef(yRotation + 180, 0, 1, 0);
+	glGetFloatv(GL_MODELVIEW_MATRIX, tree->matrix);// get & stores transform *
+	glPopMatrix();
 
 }
