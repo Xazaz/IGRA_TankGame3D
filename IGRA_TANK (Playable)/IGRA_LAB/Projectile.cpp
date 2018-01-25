@@ -76,6 +76,7 @@ void Projectile::HandleKeyDown(WPARAM wParam, float YawAngle, float TiltAngle)
 			Fire();
 			yawAngle = YawAngle;
 			tiltAngle = TiltAngle;
+			//
 
 		}
 	}
