@@ -144,11 +144,10 @@ void RobotArm::BuildTree() {
 
 	tree->child = lowerArmNode;
 	//jointNode2->child = upperArmNode;
-	lowerArmNode->child = upperArmNode;
+	lowerArmNode->child = jointNode2;
 
 	lowerArmNode->sibling= jointNode;
-	upperArmNode->sibling = jointNode2;
-
+	jointNode2->child = upperArmNode;
 
 	clock->Start();
 }
@@ -189,7 +188,7 @@ void RobotArm::DrawBase() {
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, blue);
 
 	glBegin(GL_POLYGON);
-	glColor3f(0, 1.0f, 0);
+	glColor3f(.0f, .0f, 0);
 	glVertex3f(-1, -1, -1);//5
 	glVertex3f(-1, 1, -1);//4
 	glVertex3f(-1, 1, 1);//3
@@ -198,7 +197,7 @@ void RobotArm::DrawBase() {
 
 	// Y-
 	glBegin(GL_POLYGON);
-	glColor3f(0, 1.0f, 0);
+	glColor3f(.0f, .0f, 0);
 	glVertex3f(1, -1, -1);//4
 	glVertex3f(-1, -1, -1);//3
 	glVertex3f(-1, -1, 1);//2
@@ -207,7 +206,7 @@ void RobotArm::DrawBase() {
 
 	// Z-
 	glBegin(GL_POLYGON);
-	glColor3f(0, 1.0f, 0);
+	glColor3f(.0f, .0f, 0);
 	glVertex3f(1, -1, -1); // 7
 	glVertex3f(1, 1, -1); // 6
 	glVertex3f(-1, 1, -1); // 5
@@ -216,7 +215,7 @@ void RobotArm::DrawBase() {
 
 	// X+
 	glBegin(GL_POLYGON);
-	glColor3f(0, 1.0f, 0);
+	glColor3f(.0f, .0f, 0);
 	glVertex3f(1, -1, 1);
 	glVertex3f(1, 1, 1);
 	glVertex3f(1, 1, -1);
@@ -225,7 +224,7 @@ void RobotArm::DrawBase() {
 
 	// Y+
 	glBegin(GL_POLYGON);
-	glColor3f(0, 1.0f, 0);
+	glColor3f(.0f, .0f, 0);
 	glVertex3f(1, 1, 1);
 	glVertex3f(-1, 1, 1);
 	glVertex3f(-1, 1, -1);
@@ -235,22 +234,21 @@ void RobotArm::DrawBase() {
 }
 void RobotArm::DrawLowerArm() {
 	glPushMatrix();
-	glRotatef(-90, 1, 0, 0);
+	glRotatef(-90, 0, 0, 0);
 	//glEnable(GL_LIGHTING);
-	glColor3f(1.0f, 1.0f, 0);
+	glColor3f(0.3, 0.3, 0.2);
 	//SetMaterial(&redPlasticMaterial);
-	gluCylinder(lowerArm, 0.15, 0.15, 1.95, 64, 64);
+	gluCylinder(lowerArm, 0.35, 0.35, 1.95, 64, 64);
 	//glDisable(GL_LIGHTING);
 	glPopMatrix();
 }
 void RobotArm::DrawUpperArm() {
 	glPushMatrix();
-	glTranslatef(0, 1.5, 0);
 	DrawJoint();
 	//glEnable(GL_LIGHTING);
 	//SetMaterial(&redPlasticMaterial);
-	glColor3f(1.0f, 0.0f, 1.0f);
-	gluCylinder(upperArm, 0.15, 0.15, 1.5, 64, 64);
+	glColor3f(0.3, 0.3, 0.2);
+	gluCylinder(upperArm, 0.18, 0.18, 2, 64, 64);
 	//glDisable(GL_LIGHTING);
 	glPopMatrix();
 }
@@ -258,9 +256,9 @@ void RobotArm::DrawUpperArm() {
 void RobotArm::DrawJoint() {
 	glPushMatrix();
 	//glEnable(GL_LIGHTING);
-	//SetMaterial(&yellowPlasticMaterial);
-	glColor3f(0, 1.0f, 0);
-	gluSphere(joint, 0.25, 64, 64);
+	SetMaterial(&yellowPlasticMaterial);
+	glColor3f(0.3, 0.3, 0.2);
+	gluSphere(joint, 0.5, 64, 64);
 	//glDisable(GL_LIGHTING);
 	glPopMatrix();
 }
@@ -348,8 +346,17 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 	glLoadIdentity();
 	//glLoadIdentity();
 	//glTranslatef(xPos, yPos, zPos);
+	glPushMatrix();
+	//glMultMatrixf(upperArmNode->matrix);
 	glRotatef(rotUpperArm, 0, 1, 0);
 	glGetFloatv(GL_MODELVIEW_MATRIX, upperArmNode->matrix);// get & stores transform
+	
+
+	
+	glTranslatef(0, 1.5, 0);
+	glRotatef(rotLowerArm, 1, 0, 0);
+	glGetFloatv(GL_MODELVIEW_MATRIX, jointNode2->matrix);// get & stores transform
+	glPopMatrix();
 	
 }
 void RobotArm::HandleKeyRelease(WPARAM wParam)
@@ -435,5 +442,4 @@ void RobotArm::Draw() {
 	glRotatef(yRotation + 180, 0, 1, 0);
 	glGetFloatv(GL_MODELVIEW_MATRIX, tree->matrix);// get & stores transform *
 	glPopMatrix();
-
 }
