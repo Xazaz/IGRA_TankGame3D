@@ -30,6 +30,10 @@ void Projectile::Draw() {
 			//ROTATE DIRECTION TO MOVE
 			glRotatef(yawAngle + 90, 0, 1, 0);
 
+			glRotatef(-tiltAngle, 0, 0, 1);
+			glTranslatef(1 * tiltAngle, 0, 0);
+			glRotatef(tiltAngle, 0, 0, 1);
+
 			glTranslatef(localDistX, localDistY, 0);
 
 			//ROTATE TO FACE
@@ -46,7 +50,7 @@ void Projectile::Draw() {
 
 void Projectile::Fire() {
 	velocityX = 1;
-	velocityY = 1;
+	velocityY = tiltAngle * velocityY;
 
 	currentStat = PROECTILESTAT::FIRED;
 }

@@ -116,7 +116,7 @@ void RobotArm::BuildTree() {
 	glRotatef(rotUpperArm, 1, 0, 0);
 	glGetFloatv(GL_MODELVIEW_MATRIX, upperArmNode->matrix);
 	// The first joint
-	TreeNode* jointNode = new TreeNode;
+	jointNode = new TreeNode;
 	jointNode->child = 0;
 	jointNode->sibling = 0;
 	jointNode->drawFunctionID = DRAW_JOINT_FUNCTION_ID;
@@ -124,17 +124,29 @@ void RobotArm::BuildTree() {
 	glTranslatef(0, 0, 1.5);
 	glGetFloatv(GL_MODELVIEW_MATRIX, jointNode->matrix);
 	// The second joint
-	TreeNode* jointNode2 = new TreeNode;
+	jointNode2 = new TreeNode;
 	jointNode2->child = 0;
 	jointNode2->sibling = 0;
 	jointNode2->drawFunctionID = DRAW_JOINT_FUNCTION_ID;
 	glLoadIdentity();
 	glTranslatef(0, 0, 1.5);
 	glGetFloatv(GL_MODELVIEW_MATRIX, jointNode2->matrix);
-	// Plugging the nodes in the tree together
+	/*// Plugging the nodes in the tree together
 	tree->child = lowerArmNode;
+	//jointNode2->child = upperArmNode;
+	lowerArmNode->sibling = upperArmNode;
+	
+	jointNode2->child = upperArmNode;
+	//upperArmNode->sibling = lowerArmNode;
+	//jointNode2->sibling = upperArmNode;
+	//lowerArmNode->sibling = jointNode;
+	//upperArmNode->child = jointNode2;*/
+
+	tree->child = lowerArmNode;
+	//jointNode2->child = upperArmNode;
 	lowerArmNode->child = upperArmNode;
-	lowerArmNode->sibling = jointNode;
+
+	lowerArmNode->sibling= jointNode;
 	upperArmNode->sibling = jointNode2;
 
 
@@ -320,14 +332,21 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 		rotUpperArm += 3;
 	}
 	
-	//Update the rotation of the lower arm (Up and down)
+	/*// Update the rotation of the upper adrm (Right and left)
 	glLoadIdentity();
 	//glTranslatef(xPos, yPos, zPos);
 	glRotatef(rotLowerArm, 1, 0, 0);
-	glGetFloatv(GL_MODELVIEW_MATRIX, lowerArmNode->matrix);// get & stores transform
-	
-	// Update the rotation of the upper arm (Right and left)
+	glGetFloatv(GL_MODELVIEW_MATRIX, lowerArmNode->matrix);// get & stores transform*/
+
+	// Update the rotation of the upper adrm (Right and left)
+	/*glLoadIdentity();
+	glTranslatef(0, 0, 1.5f);
+	glRotatef(rotLowerArm, 1, 0, 0);
+	glGetFloatv(GL_MODELVIEW_MATRIX, lowerArmNode->matrix);// get & stores transform*/
+
+	// Update the rotation of the upper adrm (Right and left)
 	glLoadIdentity();
+	//glLoadIdentity();
 	//glTranslatef(xPos, yPos, zPos);
 	glRotatef(rotUpperArm, 0, 1, 0);
 	glGetFloatv(GL_MODELVIEW_MATRIX, upperArmNode->matrix);// get & stores transform
@@ -393,11 +412,11 @@ void RobotArm::Draw() {
 			break;
 	case SS:
 		if (currentVelo > 0) {
-			currentVelo -= t * 0.5;
+			currentVelo -= t * 0.3;
 		}
 		else if (currentVelo < 0)
 		{
-			currentVelo += t * 0.5;
+			currentVelo += t * 0.3;
 		}
 		break;
 	}

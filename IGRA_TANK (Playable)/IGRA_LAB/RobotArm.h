@@ -47,6 +47,8 @@ public:
 	TreeNode* tree;
 	TreeNode* lowerArmNode;
 	TreeNode* upperArmNode;
+	TreeNode* jointNode2;
+	TreeNode* jointNode;
 
 	Material  yellowPlasticMaterial = { { 0.0f ,0.0f ,0.0f ,1.0f},
 										{ 0.5f ,0.5f ,0.0f ,1.0f},
