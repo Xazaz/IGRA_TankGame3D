@@ -353,7 +353,7 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 	
 
 	
-	glTranslatef(xPos, 1.5, zPos);
+	glTranslatef(0, 1.5, 0);
 	glRotatef(rotLowerArm, 1, 0, 0);
 	glGetFloatv(GL_MODELVIEW_MATRIX, upperArmNode->matrix);// get & stores transform
 	
