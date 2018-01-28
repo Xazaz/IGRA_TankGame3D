@@ -247,7 +247,7 @@ void RobotArm::DrawUpperArm() {
 	DrawJoint();
 	//glEnable(GL_LIGHTING);
 	//SetMaterial(&redPlasticMaterial);
-	glColor3f(0.3, 0.3, 0.2);
+	glColor3f(0.1, 0.5, 0.2);
 	gluCylinder(upperArm, 0.18, 0.18, 2, 64, 64);
 	//glDisable(GL_LIGHTING);
 	glPopMatrix();
@@ -346,17 +346,17 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 	glLoadIdentity();
 	//glLoadIdentity();
 	//glTranslatef(xPos, yPos, zPos);
-	glPushMatrix();
+	
 	//glMultMatrixf(upperArmNode->matrix);
 	glRotatef(rotUpperArm, 0, 1, 0);
 	glGetFloatv(GL_MODELVIEW_MATRIX, upperArmNode->matrix);// get & stores transform
 	
 
 	
-	glTranslatef(0, 1.5, 0);
+	glTranslatef(xPos, 1.5, zPos);
 	glRotatef(rotLowerArm, 1, 0, 0);
-	glGetFloatv(GL_MODELVIEW_MATRIX, jointNode2->matrix);// get & stores transform
-	glPopMatrix();
+	glGetFloatv(GL_MODELVIEW_MATRIX, upperArmNode->matrix);// get & stores transform
+	
 	
 }
 void RobotArm::HandleKeyRelease(WPARAM wParam)

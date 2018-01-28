@@ -1,9 +1,15 @@
-﻿  IGRA_LAB.cpp
-c:\users\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\projectile.h(4): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\igra_lab.cpp(71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\igra_lab.cpp(72): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\igra_lab.cpp(214): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\igra_lab.cpp(215): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\igra_lab.cpp(374): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  IGRA_LAB.vcxproj -> C:\Users\Joshua\Documents\GitHub\IGRA_TankGame3D\IGRA_TANK (Playable)\Debug\IGRA_LAB.exe
-  IGRA_LAB.vcxproj -> C:\Users\Joshua\Documents\GitHub\IGRA_TankGame3D\IGRA_TANK (Playable)\Debug\IGRA_LAB.pdb (Partial PDB)
+﻿  RobotArm.cpp
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(51): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(239): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(250): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(260): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(381): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(382): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(432): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(433): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(435): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(436): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(441): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+d:\joshua\documents\github\igra_tankgame3d\igra_tank (playable)\igra_lab\robotarm.cpp(442): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  IGRA_LAB.vcxproj -> D:\Joshua\Documents\Github\IGRA_TankGame3D\IGRA_TANK (Playable)\Debug\IGRA_LAB.exe
+  IGRA_LAB.vcxproj -> D:\Joshua\Documents\Github\IGRA_TankGame3D\IGRA_TANK (Playable)\Debug\IGRA_LAB.pdb (Partial PDB)
