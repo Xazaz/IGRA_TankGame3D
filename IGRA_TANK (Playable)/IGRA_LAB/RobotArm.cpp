@@ -1,3 +1,13 @@
+/*
+__________________________________
+
+**********************************
+[000] Done by Joshua, P1651481 (Turret tilting and rotating)
+[001] Done by Joshua, P1651481 (Basic Tank Movement and Rotation)
+[003] Done by Zhen Xiong, P1646364 (Acceleration)
+**********************************
+__________________________________
+*/
 #include "stdafx.h"
 #include "RobotArm.h"
 #include "Clock.h"

@@ -1,3 +1,13 @@
+/*
+__________________________________
+
+**********************************
+[000] Done by Joshua, P1651481 (Turret tilting and rotating)
+[001] Done by Joshua, P1651481 (Basic Tank Movement and Rotation)
+[003] Done by Zhen Xiong, P1646364 (Acceleration)
+**********************************
+__________________________________
+*/
 #pragma once
 #define DRAW_BASE_FUNCTION_ID 0
 #define DRAW_LOWERARM_FUNCTION_ID 1
