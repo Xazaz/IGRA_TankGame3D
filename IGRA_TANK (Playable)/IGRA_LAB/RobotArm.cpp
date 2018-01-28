@@ -315,33 +315,22 @@ void RobotArm::HandleKeyWASD(WPARAM wParam)
 	}
 	if (wParam == 'W') //Turret up 
 	{
+		if(rotLowerArm > -45)
 		rotLowerArm -= 3;
 	}
 	if (wParam == 'S') //Turret down 
 	{
+		if (rotLowerArm < 0)
 		rotLowerArm += 3;
 	}
-	if (wParam == 'A')//Turret right
+	if (wParam == 'D')//Turret right
 	{
 		rotUpperArm -= 3;
 	}
-	if (wParam == 'D')//Turret left 
+	if (wParam == 'A')//Turret left 
 	{
 		rotUpperArm += 3;
 	}
-	
-	/*// Update the rotation of the upper adrm (Right and left)
-	glLoadIdentity();
-	//glTranslatef(xPos, yPos, zPos);
-	glRotatef(rotLowerArm, 1, 0, 0);
-	glGetFloatv(GL_MODELVIEW_MATRIX, lowerArmNode->matrix);// get & stores transform*/
-
-	// Update the rotation of the upper adrm (Right and left)
-	/*glLoadIdentity();
-	glTranslatef(0, 0, 1.5f);
-	glRotatef(rotLowerArm, 1, 0, 0);
-	glGetFloatv(GL_MODELVIEW_MATRIX, lowerArmNode->matrix);// get & stores transform*/
-
 	// Update the rotation of the upper adrm (Right and left)
 	glLoadIdentity();
 	//glLoadIdentity();
@@ -388,7 +377,6 @@ void RobotArm::Rotate(double angle) {
 
 void RobotArm::Draw() {
 	DrawTree(tree);
-	DrawJoint();
 
 	double timePassedAbsInSeconds = clock->GetTimePassedSinceStart();
 	t = timePassedAbsInSeconds * 0.001;

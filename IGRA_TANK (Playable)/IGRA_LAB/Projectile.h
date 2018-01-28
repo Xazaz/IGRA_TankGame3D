@@ -24,6 +24,7 @@ public:
 	void Fire();
 
 	void setMaterial(Material* m);
+	void setVelocity(float veloX, float veloY);
 
 	void DrawCylinder(double radius, double height, double slice, double stack);
 
