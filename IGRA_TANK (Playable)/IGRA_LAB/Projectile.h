@@ -7,28 +7,28 @@ class Projectile {
 public:
 	GLUquadric * quad;
 
-	float globalPosX, globalPosY, globalPosZ;
-	float localDistX = 0, localDistY = 0;
+	float globalPosX, globalPosY, globalPosZ;	//GLOBAL START POS
+	float localDistX = 0, localDistY = 0; //RELATIVE DISTANCE
 
 	float velocityX, velocityY, maxVelocityX = 3, maxVelocityY = 3;
-	float yawAngle, tiltAngle;
+	float yawAngle, tiltAngle; //YAW, UP, TILT, RIGHT
 
-	Material yellowPlasticMaterial;
+	Material yellowPlasticMaterial; 
 
 	enum PROECTILESTAT { NOTFIRED, FIRED ,LANDED};
-	PROECTILESTAT currentStat = NOTFIRED;
+	PROECTILESTAT currentStat = NOTFIRED; 
 
-	void Update(float deltaTime);
-	void Draw();
-	void Spawn(float posX, float posY, float posZ);
-	void Fire();
+	void Update(float deltaTime);	//UPDATE, HOLD DRAW
+	void Draw();	//DRAW AND SIMULATE PHYSICS
+	void Spawn(float posX, float posY, float posZ); //SET NEW POSITION
+	void Fire(); //FIRE, MOVE THE PROJECTILE
 
-	void setMaterial(Material* m);
-	void setVelocity(float veloX, float veloY);
+	void setMaterial(Material* m);	//SET MATERIAL
+	void setVelocity(float veloX, float veloY); //SET NEW VELOCITY
 
-	void DrawCylinder(double radius, double height, double slice, double stack);
+	void DrawCylinder(double radius, double height, double slice, double stack); //DRAW CYLINDER
 
-	void HandleKeyDown(WPARAM wParam, float YawAngle, float TiltAngle);
+	void HandleKeyDown(WPARAM wParam, float YawAngle, float TiltAngle);	//EVENT HANDLER
 
 	Projectile();
 	~Projectile();
